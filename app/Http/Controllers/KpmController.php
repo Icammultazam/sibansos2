@@ -15,7 +15,15 @@ class KpmController extends Controller
      */
     public function index()
     {
-        //
+        $posts=Kpm::latest();
+        if(request('search')){
+            $posts->where('NAMAKPM', 'like', '%'.request('search').'%');
+        }
+
+        return view ('kpm',[
+            'kpms'=>$posts->paginate(8)
+        
+        ]);
     }
 
     /**

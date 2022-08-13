@@ -8,9 +8,22 @@
 
     <div class="card bg-success">
         <div class="card-body text-info">
-          <h3 class="text-white">Daftar KPM</h3>
+          <h4 class="text-white">Daftar KPM</h4>
         </div>
       </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <form action="/kpm">
+            <div class="input-group mt-3 mb-3">
+              <input type="text" class="form-control" placeholder="Cari berdasarkan nama agen" name="search" value="{{ request('search') }}">
+              <button class="btn btn-primary" type="submit" >Cari</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    @if($kpms->count())
       
 
       <table class="table">
@@ -22,68 +35,35 @@
             <th scope="col">No KK</th>
             <th scope="col">NIK</th>
             <th scope="col">No KKS</th>
+            <th scope="col">Nilai</th>
             <th scope="col">Status</th>
+            <th scope="col">Ket</th>
             
                              </tr>
         </thead>
+        @foreach ($kpms as $kpm)
+            
+       
         <tbody>
           <tr>
-            <th scope="row">1</th>
-            <td> Wastro </td>
-            <td>Kp. Sarkanjut</td>
-            <td>987987987</td>
-            <td>954987497</td>
-            <td>09380980980980980</td>
-            <td> 
-              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="">
-                Rp. 250.000,-
-              </button>
-            </td>
+            <th scope="row">{{ $loop->iteration}}</th>
+            <td> {{ $kpm->NAMAKPM }} </td>
+            <td>{{ $kpm->ALAMAT }}</td>
+            <td>{{ $kpm->NOKK }}</td>
+            <td>{{ $kpm->NIK }}</td>
+            <td>{{ $kpm->NOKKS }}</td>
+            <td>{{ $kpm->NILAI }}</td>
+            <td>{{ $kpm->STATUS }}</td>
+            <td>{{ $kpm->KET }}</td>
             
-          </tr>
-          <tr>
-            <th scope="row">1</th>
-            <td> Warsih </td>
-            <td>Kp.Cibingbin</td>
-            <td>987987987</td>
-            <td>954987497</td>
-            <td>09380980980980980</td>
-            <td> 
-              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                Saldo Nol
-              </button>
             </td>
-            
           </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Joni </td>
-            <td>Kp.Cikoang</td>
-            <td>987987987</td>
-            <td>954987434</td>
-            <td>09380980980980980</td>
-            <td>
-              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal2">
-                Kartu Ruksak
-              </button>
-
-            </td>>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Jokowi Iskandar </td>
-            <td>Kp. Sarleuleus</td>
-            <td>987987987</td>
-            <td>954987434</td>
-            <td>09380980980980980</td>
-            <td>
-              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal3">
-                Error
-              </button>
-
-            </td>>
-          </tr>
+          @endforeach
+         
         </tbody>
+        @else
+        <p class="text-center fs-4" >Data Tidak Ditemukan</p>
+    @endif
       </table>
       
       

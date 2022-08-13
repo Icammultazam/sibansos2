@@ -7,7 +7,9 @@ use App\Http\Controllers\JadwalController;
 use App\Http\Controllers\KpmpostController;
 use App\Http\Controllers\PenerimaController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\AgenfrontController;
 use App\Http\Controllers\Dashboardcontroller;
+use App\Http\Controllers\KpmController;
 use App\Http\Controllers\PenerimaPostController;
 
 /*
@@ -32,13 +34,10 @@ Route::get('/', function () {
 Route::get('/bnpt', [PenerimaController::class, 'index']);
 
 
-Route::get('/agen', function () {
-    return view('agen');
-});
+Route::get('/agen', [AgenfrontController::class, 'index'] );
 
-Route::get('/kpm', function () {
-    return view('kpm');
-});
+
+Route::get('/kpm',[KpmController::class, 'index'] );
 
 Route::get('/salur', function () {
     return view('jadwalsalur');

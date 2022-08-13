@@ -12,47 +12,47 @@
           <h3 class="text-white">Daftar Agen</h3>
         </div>
       </div>
+      <div class="row">
+        <div class="col-md-6">
+          <form action="/agen">
+            <div class="input-group mb-3">
+              <input type="text" class="form-control" placeholder="Cari berdasarkan nama agen" name="search" value="{{ request('search') }}">
+              <button class="btn btn-primary" type="submit" >Cari</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    @if($agents->count())
       
-
       <table class="table">
         <thead class="thead-dark">
           <tr>
             <th scope="col">No</th>
-            <th scope="col">Nama agent</th>
+            <th scope="col">Nama Agent</th>
             <th scope="col">No Izin</th>
             <th scope="col">Alamat</th>
             <th scope="col">Penanggung Jawab/pemilik</th>
             <th scope="col">Ketarangan</th>
-           
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Warong ABC</td>
-            <td>45454Cfgfd</td>
-            <td>Kp. Sarkanjut</td>
-            <td>Abdul Syukur</td>
-            <td>Ket</td>
             
           </tr>
+        </thead>
+        @foreach ($agents as $agen)
+        <tbody>
           <tr>
-            <th scope="row">2</th>
-            <td>Warong Ibrahim</td>
-            <td>45454Cfgfd</td>
-            <td>Kp.Cigadung</td>
-            <td>Mariam</td>
-            <td>Ket</td>
+            <th scope="row">{{ $loop->iteration }}</th>
+            <td>{{ $agen->NAMAAGEN }}</td>
+            <td>{{ $agen->NOIZIN }}</td>
+            <td>{{ $agen->ALAMAT }}</td>
+            <td>{{ $agen->PJ }}</td>
+            <td>{{ $agen->KET }}</td>
+            
           </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Warong Marjinah</td>
-            <td>45454Cfgfd</td>
-            <td>Kp. Sarleuleus</td>
-            <td>Iyom Kristi</td>
-            <td>Ket</td>
-          </tr>
+          @endforeach
         </tbody>
+        @else
+        <p class="text-center fs-4" >Data Tidak Ditemukan</p>
+    @endif
       </table>
       
       
