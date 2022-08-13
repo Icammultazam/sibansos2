@@ -4,12 +4,12 @@
 
 <div class="container-fluid">
   <div class="card-header">
-    <h3>Daftar Penerima BPNT, PKH, PBI</h3>
+    <h3>Daftar Penerima BNPT, PKH, PBI</h3>
     <div class="row">
                   <div class="col-md-6">
                     <form action="/bnpt">
                       <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="Recipient's username" name="search" value="{{ request('search') }}">
+                        <input type="text" class="form-control" placeholder="Cari berdasarkan No.KK/NIK/No.KKS" name="search" value="{{ request('search') }}">
                         <button class="btn btn-primary" type="submit" >Cari</button>
                       </div>
                     </form>
@@ -17,7 +17,7 @@
                 </div>
               </div>
               @if($post->count())
-              <table class="table table-dark">
+              <table class="table table">
                 <thead>
                   <tr>
                     <th scope="col">No</th>
@@ -34,7 +34,7 @@
                 <tbody>
                   @foreach ($post as $item)
                   <tr>
-                    <th scope="row">{{ $item->id }}</th>
+                    <th scope="row">{{ $loop->iteration }}</th>
                     <td>{{ $item->NAMA }}</td>
                     <td>{{ $item->TEMPAT_LAHIR }}</td>
                     <td>{{ $item->ALAMAT}}</td>

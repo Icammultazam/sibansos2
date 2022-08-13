@@ -65,7 +65,7 @@
       class="navbar navbar-expand-lg bg-white navbar-light sticky-top py-lg-0 px-4 px-lg-5 wow fadeIn"
       data-wow-delay="0.1s"
     >
-      <a href="index.html" class="navbar-brand p-0">
+      <a href="/" class="navbar-brand p-0">
         <img class="img-fluid me-3" src="img/icon/logogarut.png" alt="Icon" />
         <h5 class="m-0 text-primary">Sistem Informasi Bantuan Sosial (SIBANSOS) <br>
           Kecamatan Leuwigoong Kabupaten Garut
@@ -81,7 +81,7 @@
       </button>
       <div class="collapse navbar-collapse py-4 py-lg-0" id="navbarCollapse">
         <div class="navbar-nav ms-auto">
-          <a href="/" class="nav-item nav-link active">Home</a>
+          
           <div class="nav-item dropdown">
             <a
               href="#"
@@ -108,7 +108,25 @@
               <a href="/salur" class="dropdown-item">Jadwal Penyaluran</a>
             </div>
           </div>
-          <a href="#" class="nav-item nav-link">Contact</a>
+          @auth
+          <div class="nav-item dropdown">
+            <a
+              href="#"
+              class="nav-link dropdown-toggle"
+              data-bs-toggle="dropdown"
+              >Hi, {{ auth()->user()->name }}</a
+            >
+            <div class="dropdown-menu rounded-0 rounded-bottom m-0">
+              <a href="/dashboard/penerimabnpt" class="dropdown-item">Dashboard</a>
+              <form action="/logout" method="post">
+                @csrf
+                <button> <i class="bi bi-box-arrow-in-right"></i> Logout</button>
+              </form>
+            </div>
+          </div>
+          @else
+          <a href="/login" class="nav-item nav-link"><i class="bi bi-box-arrow-in-right"></i>   Login</a>
+          @endauth
         </div>
         
       </div>
