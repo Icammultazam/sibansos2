@@ -8,24 +8,23 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link {{ Request::is('dashboard/daftaragen') ? 'active' : '' }} " href="/dashboard/agen">
+          <a class="nav-link {{ Request::is('dashboard/agen') ? 'active' : '' }} " href="/dashboard/agen">
             <span data-feather="file-text" class="align-text-bottom"></span>
             Daftar Agen
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link {{ Request::is('dashboard/daftaragen') ? 'active' : '' }} " href="/dashboard/penerimabnpt">
+          <a class="nav-link {{ Request::is('dashboard/kpmpost') ? 'active' : '' }} " href="/dashboard/kpmpost">
             <span data-feather="file-text" class="align-text-bottom"></span>
             Daftar KPM
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link {{ Request::is('dashboard/daftaragen') ? 'active' : '' }} " href="/dashboard/penerimabnpt">
+          <a class="nav-link {{ Request::is('dashboard/jadwal') ? 'active' : '' }} " href="/dashboard/jadwal">
             <span data-feather="file-text" class="align-text-bottom"></span>
             Jadwal Penyaluran
           </a>
         </li>
-
       </ul>
 
      

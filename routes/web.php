@@ -1,8 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AgenController;
+use App\Http\Controllers\AgentController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\KpmpostController;
 use App\Http\Controllers\PenerimaController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\Dashboardcontroller;
@@ -53,5 +54,7 @@ Route::get('/dashboard',function(){
 })->middleware('auth');
 
 Route::resource('/dashboard/penerimabnpt', PenerimaPostController::class)->middleware('auth');
-Route::resource('/dashboard/agen', AgenController::class)->middleware('auth');
+Route::resource('/dashboard/agen', AgentController::class)->middleware('auth');
+Route::resource('/dashboard/kpmpost', KpmpostController::class)->middleware('auth');
+
 

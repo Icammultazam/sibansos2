@@ -10,13 +10,14 @@
   <div class="table-responsive">
     <a href="/dashboard/penerimabnpt/create" class="btn btn-primary mb-3">Tambah Data</a>
     <div class="col-md-6">
-      <form action="/bnpt">
+      <form action="/dashboard/penerimabnpt">
         <div class="input-group mb-3">
           <input type="text" class="form-control" placeholder="Cari berdasarkan No.KK/NIK/No.KKS" name="search" value="{{ request('search') }}">
           <button class="btn btn-primary" type="submit" >Cari</button>
         </div>
       </form>
     </div>
+    @if($penerimas->count())
     <table class="table table-striped table-sm">
       <thead>
         <tr>
@@ -35,6 +36,7 @@
       <tbody>
         @foreach ($penerimas as $penerima)     
         <tr>
+          
           <td>{{ $loop->iteration }}</td>
           <td>{{ $penerima->NAMA }}</td>
           <td>{{ $penerima->TEMPAT_LAHIR. ',  '. $penerima->TGL_LAHIR }}</td>
@@ -45,7 +47,7 @@
           <td>{{ $penerima->NOKKS }}</td>
           <td>{{ $penerima->KET }}</td>
           <td>
-            <a href="/dashboard/penerimabnpt/{{ $penerima->id }}" class="badge bg-info"> <span data-feather='eye'></span></a>
+            {{-- <a href="/dashboard/penerimabnpt/{{ $penerima->id }}" class="badge bg-info"> <span data-feather='eye'></span></a> --}}
             <a href="/dashboard/penerimabnpt/{{ $penerima->id }}/edit" class="badge bg-warning "> <span data-feather='edit'></span></a>
             <form action="/dashboard/penerimabnpt/{{ $penerima->id }}" method="post" class="d-inline">
               @method('delete')
@@ -58,7 +60,14 @@
         @endforeach
         
       </tbody>
+      @else
+      <p class="text-center fs-4" >Data Tidak Ditemukan</p>
+      @endif
     </table>
+  </div>
+  <div class="d-flex justify-content-end">
+    {{ $penerimas->links() }}
+
   </div>
     
 @endsection

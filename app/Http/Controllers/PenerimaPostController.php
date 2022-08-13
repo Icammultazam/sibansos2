@@ -15,7 +15,7 @@ class PenerimaPostController extends Controller
     public function index()
     {
         return view('dashboard.penerimapost.index', [
-            'penerimas' => Penerima::latest()->get()
+             "penerimas"=>Penerima::latest()->filter(request(['search']))->paginate(10)->withQueryString()
         ]);
     }
 
@@ -112,7 +112,7 @@ class PenerimaPostController extends Controller
 
         Penerima::where('id', $penerimabnpt->id)
                     ->update($validateData);
-                    
+
         return redirect('/dashboard/penerimabnpt')->with('berhasil', 'Data Berhasil Ditambah');
        
     }

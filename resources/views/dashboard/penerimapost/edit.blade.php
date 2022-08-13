@@ -102,7 +102,7 @@
     
 
     
-    <button class="w-100 btn btn-lg btn-primary" type="submit">Update Data</button>
+    <button class="w-100 btn btn-lg btn-primary" type="submit">Ubah Data</button>
    
 
   </form>

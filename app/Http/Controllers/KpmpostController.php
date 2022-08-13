@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Agen;
-use App\Http\Requests\StoreAgenRequest;
-use App\Http\Requests\UpdateAgenRequest;
+use App\Models\Kpm;
+use Illuminate\Http\Request;
 
-class AgenController extends Controller
+class KpmpostController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -31,10 +30,10 @@ class AgenController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreAgenRequest  $request
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreAgenRequest $request)
+    public function store(Request $request)
     {
         //
     }
@@ -42,10 +41,10 @@ class AgenController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Agen  $agen
+     * @param  \App\Models\Kpm  $kpm
      * @return \Illuminate\Http\Response
      */
-    public function show(Agen $agen)
+    public function show(Kpm $kpm)
     {
         //
     }
@@ -53,10 +52,10 @@ class AgenController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Agen  $agen
+     * @param  \App\Models\Kpm  $kpm
      * @return \Illuminate\Http\Response
      */
-    public function edit(Agen $agen)
+    public function edit(Kpm $kpm)
     {
         //
     }
@@ -64,11 +63,11 @@ class AgenController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateAgenRequest  $request
-     * @param  \App\Models\Agen  $agen
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Kpm  $kpm
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateAgenRequest $request, Agen $agen)
+    public function update(Request $request, Kpm $kpm)
     {
         //
     }
@@ -76,10 +75,10 @@ class AgenController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Agen  $agen
+     * @param  \App\Models\Kpm  $kpm
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Agen $agen)
+    public function destroy(Kpm $kpm)
     {
         //
     }

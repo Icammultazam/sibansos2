@@ -9,7 +9,7 @@
                   <div class="col-md-6">
                     <form action="/bnpt">
                       <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="Cari berdasarkan No.KK/NIK/No.KKS" name="search" value="{{ request('search') }}">
+                        <input type="text" class="form-control" placeholder="Cari berdasarkan No.KK/NIK" name="search" value="{{ request('search') }}">
                         <button class="btn btn-primary" type="submit" >Cari</button>
                       </div>
                     </form>
