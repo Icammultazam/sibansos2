@@ -78,7 +78,7 @@
 <main class="form-signin w-100 m-auto">
   <form action="/registrasi" method="post">
     @csrf
-    <img class="mb-4" src="../assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">
+    {{-- <img class="mb-4" src="../assets/brand/bootstrap-logo.svg" alt="" width="72" height="57"> --}}
     <h1 class="h3 mb-3 fw-normal">Form Registrasi</h1>
 
     <div class="form-floating">

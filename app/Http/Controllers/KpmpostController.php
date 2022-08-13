@@ -14,7 +14,15 @@ class KpmpostController extends Controller
      */
     public function index()
     {
-        //
+        $posts=Kpm::latest();
+        if(request('search')){
+            $posts->where('NOKK', 'like', '%'.request('search').'%');
+        }
+
+        return view ('dashboard.kpmpost.index',[
+            "kpms"=>$posts->paginate(3)
+        
+        ]);
     }
 
     /**
@@ -24,7 +32,7 @@ class KpmpostController extends Controller
      */
     public function create()
     {
-        //
+        return view ('dashboard.kpmpost.create');
     }
 
     /**
@@ -35,7 +43,19 @@ class KpmpostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validateData=$request->validate([
+            'NAMAKPM' => 'required|max:100',
+            'ALAMAT' => 'required|max:255',
+            'NOKK' => 'required|unique:kpms|numeric',
+            'NIK' => 'required|unique:kpms|numeric',
+            'NOKKS' => 'required',
+            'NILAI' => 'required|max:10',
+            'STATUS' => 'required|max:15',
+            'KET' => 'required|max:50',
+        ]);
+
+        Kpm::create($validateData);
+        return redirect('/dashboard/kpmpost')->with('berhasil', 'Data Berhasil Ditambah');
     }
 
     /**
@@ -55,9 +75,11 @@ class KpmpostController extends Controller
      * @param  \App\Models\Kpm  $kpm
      * @return \Illuminate\Http\Response
      */
-    public function edit(Kpm $kpm)
+    public function edit(Kpm $kpmpost)
     {
-        //
+        return view('dashboard.kpmpost.edit',[
+            'post'=>$kpmpost
+        ]);
     }
 
     /**
@@ -67,9 +89,30 @@ class KpmpostController extends Controller
      * @param  \App\Models\Kpm  $kpm
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Kpm $kpm)
+    public function update(Request $request, Kpm $kpmpost)
     {
-        //
+        $rules=[
+            'NAMAKPM' => 'required|max:100',
+            'ALAMAT' => 'required|max:255',
+            'NILAI' => 'required|max:10',
+            'STATUS' => 'required|max:15',
+            'KET' => 'required|max:50',
+        ];
+
+        if($request->NOKK != $kpmpost->NOKK){
+            $rules['NOKK']='required|unique:penerimas|numeric';          
+        };
+        if($request->NIK != $kpmpost->NIK){
+            $rules['NIK']='required|unique:penerimas|numeric';          
+        };
+      
+
+        $validateData=$request->validate($rules);
+
+        Kpm::where('id', $kpmpost->id)
+                    ->update($validateData);
+
+        return redirect('/dashboard/kpmpost')->with('berhasil', 'Data Berhasil Ditambah');
     }
 
     /**
@@ -78,8 +121,9 @@ class KpmpostController extends Controller
      * @param  \App\Models\Kpm  $kpm
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Kpm $kpm)
+    public function destroy(Kpm $kpmpost)
     {
-        //
+        Kpm::destroy($kpmpost->id);
+        return redirect('/dashboard/kpmpost');
     }
 }

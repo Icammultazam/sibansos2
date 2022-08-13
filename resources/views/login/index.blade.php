@@ -93,7 +93,7 @@
 
   <form action="/login" method="post">
     @csrf
-    <img class="mb-4" src="../assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">
+    {{-- <img class="mb-4" src="/public/img/icon/logogarut.png" alt="" width="72" height="57"> --}}
     <h1 class="h3 mb-3 fw-normal">Login Untuk Admin</h1>
 
     <div class="form-floating">
@@ -110,13 +110,13 @@
       <label for="password">Password</label>
     </div>
 
-    <div class="checkbox mb-3">
+    {{-- <div class="checkbox mb-3">
       <label>
         <input type="checkbox" value="remember-me"> Remember me
       </label>
-    </div>
+    </div> --}}
     <button class="w-100 btn btn-lg btn-primary" type="submit">Login</button>
-    <small class="d-block text-center mt-3"> <a href="/registrasi">Registrasi</a></small>
+    {{-- <small class="d-block text-center mt-3"> <a href="/registrasi">Registrasi</a></small> --}}
     <p class="mt-5 mb-3 text-muted">&copy; 2022</p>
   </form>
 </main>

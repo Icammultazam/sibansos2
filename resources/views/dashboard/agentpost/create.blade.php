@@ -5,11 +5,11 @@
     <h1 class="h2 ">Tambah Data</h1>
     
   </div>
-{{-- @if(session()->has('berhasil'))
+@if(session()->has('berhasil'))
 <div class="alert alert-success" role="alert">
     {{ session('berhasil') }}
 </div>
-@endif --}}
+@endif
 
 <div class="col-lg-8">
 <main class="form-signin w-100 m-auto">

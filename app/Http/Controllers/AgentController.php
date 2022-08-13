@@ -50,7 +50,7 @@ class AgentController extends Controller
             'PJ' => 'required|max:50',
             'KET' => 'required|max:100',
         ]);
-
+       
         Agen::create($validateData);
         return redirect('/dashboard/agen');
     }
