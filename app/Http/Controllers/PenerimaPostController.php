@@ -15,7 +15,7 @@ class PenerimaPostController extends Controller
     public function index()
     {
         return view('dashboard.penerimapost.index', [
-             "penerimas"=>Penerima::latest()->filter(request(['search']))->paginate(10)->withQueryString()
+             "penerimas"=>Penerima::latest()->filter(request(['search']))->paginate(8)->withQueryString()
         ]);
     }
 

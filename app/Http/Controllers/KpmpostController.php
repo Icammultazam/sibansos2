@@ -20,7 +20,7 @@ class KpmpostController extends Controller
         }
 
         return view ('dashboard.kpmpost.index',[
-            "kpms"=>$posts->paginate(3)
+            "kpms"=>$posts->paginate(8)
         
         ]);
     }

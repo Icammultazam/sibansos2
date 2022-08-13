@@ -20,7 +20,7 @@ class AgentController extends Controller
         }
 
         return view ('dashboard.agentpost.index',[
-            "agents"=>$posts->paginate(3)
+            "agents"=>$posts->paginate(8)
         
         ]);
     }

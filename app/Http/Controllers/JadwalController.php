@@ -3,8 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Jadwal;
-use App\Http\Requests\StoreJadwalRequest;
-use App\Http\Requests\UpdateJadwalRequest;
+use Illuminate\Http\Request;
 
 class JadwalController extends Controller
 {
@@ -15,7 +14,15 @@ class JadwalController extends Controller
      */
     public function index()
     {
-        //
+        $posts=Jadwal::latest();
+        if(request('search')){
+            $posts->where('NAMAWAR0NG', 'like', '%'.request('search').'%');
+        }
+
+        return view ('dashboard.jadwal.index',[
+            "jadwals"=>$posts->paginate(8)
+        
+        ]);
     }
 
     /**
@@ -25,18 +32,27 @@ class JadwalController extends Controller
      */
     public function create()
     {
-        //
+        return view ('dashboard.jadwal.create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreJadwalRequest  $request
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreJadwalRequest $request)
+    public function store(Request $request)
     {
-        //
+        $validateData=$request->validate([
+            'NAMADESA' => 'required|max:100',
+            'NAMAWAR0NG' => 'required|max:50',
+            'TGL_PENYALURAN' => 'required',
+            'TEMPAT_SALUR' => 'required|max:50',
+            
+        ]);
+       
+        Jadwal::create($validateData);
+        return redirect('/dashboard/jadwal');
     }
 
     /**
@@ -58,19 +74,32 @@ class JadwalController extends Controller
      */
     public function edit(Jadwal $jadwal)
     {
-        //
+        return view('dashboard.jadwal.edit',[
+            'jadwal'=>$jadwal
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateJadwalRequest  $request
+     * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\Jadwal  $jadwal
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateJadwalRequest $request, Jadwal $jadwal)
+    public function update(Request $request, Jadwal $jadwal)
     {
-        //
+        $validateData=$request->validate([
+            'NAMADESA' => 'required|max:100',
+            'NAMAWAR0NG' => 'required|max:50',
+            'TGL_PENYALURAN' => 'required',
+            'TEMPAT_SALUR' => 'required|max:50',
+            
+        ]);
+
+        Jadwal::where('id', $jadwal->id)
+                    ->update($validateData);
+
+        return redirect('/dashboard/jadwal')->with('berhasil', 'Data Berhasil Ditambah');
     }
 
     /**
@@ -81,6 +110,7 @@ class JadwalController extends Controller
      */
     public function destroy(Jadwal $jadwal)
     {
-        //
+        Jadwal::destroy($jadwal->id);
+        return redirect('/dashboard/jadwal');
     }
 }
