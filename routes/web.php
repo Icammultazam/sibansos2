@@ -11,6 +11,7 @@ use App\Http\Controllers\AgenfrontController;
 use App\Http\Controllers\Dashboardcontroller;
 use App\Http\Controllers\KpmController;
 use App\Http\Controllers\PenerimaPostController;
+use App\Http\Controllers\SalurController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,25 +24,16 @@ use App\Http\Controllers\PenerimaPostController;
 |
 */
 
-Route::get('/', function () {
-    return view('landingpage');
-});
+Route::get('/',[PenerimaController::class,'hitung']);
 
 // Route::get('/bnpt', function () {
 //     return view('penerimabnpt');
 // });
 
 Route::get('/bnpt', [PenerimaController::class, 'index']);
-
-
 Route::get('/agen', [AgenfrontController::class, 'index'] );
-
-
 Route::get('/kpm',[KpmController::class, 'index'] );
-
-Route::get('/salur', function () {
-    return view('jadwalsalur');
-});
+Route::get('/salur', [SalurController::class, 'index']);
 
 Route::get('/login',[LoginController::class,'index' ] )->name('login')->middleware('guest');
 Route::post('/login',[LoginController::class,'authenticate' ] );

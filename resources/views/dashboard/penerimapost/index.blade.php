@@ -39,7 +39,7 @@
           
           <td>{{ $loop->iteration }}</td>
           <td>{{ $penerima->NAMA }}</td>
-          <td>{{ $penerima->TEMPAT_LAHIR. ',  '. $penerima->TGL_LAHIR }}</td>
+          <td>{{ $penerima->TEMPAT_LAHIR. ',  '. $penerima->TGL_LAHIR->format('d-m-Y') }}</td>
           <td>{{ $penerima->ALAMAT }}</td>
           <td>{{ $penerima->PEKERJAAN }}</td>
           <td>{{ $penerima->NOKK }}</td>

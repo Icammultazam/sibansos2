@@ -11,6 +11,19 @@
           <h3 class="text-white">Jadwal Penyaluran</h3>
         </div>
       </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <form action="/salur">
+            <div class="input-group mt-3 mb-3">
+              <input type="text" class="form-control" placeholder="Cari berdasarkan ewarong" name="search" value="{{ request('search') }}">
+              <button class="btn btn-primary" type="submit" >Cari</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    @if($salurs->count())
       
 
       <table class="table">
@@ -25,31 +38,22 @@
            
           </tr>
         </thead>
+
+        @foreach ($salurs as $salur)
         <tbody>
           <tr>
-            <th scope="row">1</th>
-            <td>Karangsari</td>
-            <td>Warung ABC</td>
-            <td>12 Juni 2022</td>
-            <td>Bale Desa</td>
-            
-            
+            <th scope="row">{{ $loop->iteration }}</th>
+            <td>{{$salur->NAMADESA  }}</td>
+            <td>{{$salur->NAMAWAR0NG  }}</td>
+            <td>{{$salur->TGL_PENYALURAN->format('d-m-Y')}}</td>
+            <td>{{$salur->TEMPAT_SALUR}}</td>
           </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Leuwigoong</td>
-            <td>Warung Jinah</td>
-            <td>11 Juni 2022</td>
-            <td>Lapang Bola</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Sindangsari</td>
-            <td>Warung Sae</td>
-            <td>22 Juni 2022</td>
-            <td>Bale Desa</td>
-          </tr>
+          @endforeach
+          
         </tbody>
+        @else
+        <p class="text-center fs-4" >Data Tidak Ditemukan</p>
+    @endif
       </table>
       
       

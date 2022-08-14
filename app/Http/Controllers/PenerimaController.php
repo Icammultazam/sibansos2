@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Penerima;
 use App\Http\Requests\StorePenerimaRequest;
 use App\Http\Requests\UpdatePenerimaRequest;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
 
 class PenerimaController extends Controller
 {
@@ -13,21 +15,11 @@ class PenerimaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-
-        
-        // $post=Penerima::latest()->paginate(3);
-
-        // return view('penerimabnpt', compact('post'));
-
-        // // return view('penerimabnpt', [
-        // //     'post' =>Penerima::latest()->paginate(2)
-        // // ]);
-
  
         return view('penerimabnpt', [
-            "post"=>Penerima::latest()->filter(request(['search']))->paginate(3)->withQueryString()
+            "post"=>Penerima::latest()->filter(request(['search']))->paginate(8)->withQueryString()
         ]);
        
     }
@@ -37,9 +29,17 @@ class PenerimaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function hitung()
     {
-        //
+        $penerima = DB::table('penerimas')->count();
+        $agent =  DB::table('agens')->count();
+        
+        return view('landingpage',[
+            'penerima'=>$penerima,
+            'agen'=>$agent
+        ]);
+
+        
     }
 
     /**

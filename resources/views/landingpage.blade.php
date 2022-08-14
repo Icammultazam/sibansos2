@@ -3,7 +3,7 @@
 @section('container')
     
     <!-- Header Start -->
-    <div class="container-fluid bg-dark p-0 mb-5 h-25">
+    <div class="container-fluid bg-dark p-0 mb-2 h-25">
         <div class="row g-0 flex-column-reverse flex-lg-row">
           <div class="col-lg-6 p-0 wow fadeIn" data-wow-delay="0.1s">
       
@@ -30,7 +30,7 @@
                        data-wow-delay="0.3s"
                      >
                        <i class="fa fa-users fa-3x text-primary mb-3"></i>
-                       <h1 class="text-white mb-2" data-toggle="counter-up">12345</h1>
+                       <h1 class="text-white mb-2" data-toggle="counter-up">{{ $penerima }}</h1>
                        <p class="text-white mb-0">Jumlah Penerima Bantuan</p>
                      </div>
                      <div
@@ -38,7 +38,7 @@
                        data-wow-delay="0.5s"
                      >
                        <i class="fa fa-certificate fa-3x text-primary mb-3"></i>
-                       <h1 class="text-white mb-2" data-toggle="counter-up">12345</h1>
+                       <h1 class="text-white mb-2" data-toggle="counter-up">{{ $agen }}</h1>
                        <p class="text-white mb-0">Jumlah Agen</p>
                      </div>
                      <div
@@ -77,5 +77,18 @@
         </div>
         
       </div>
+
+     
+      <div class="card text-center">
+       
+        <div class="card-body">
+          <h5 class="card-title">Untuk Informasi lebih lanjut Hubungi : </h5>
+          <p class="card-text">Kantor Kecamatan Leuwigoong, Jl. Leuwigoong No.26 Telp 0252 7876863874 </p>
+          
+        </div>
+       
+      </div>
+        
+
 
 @endsection

@@ -22,7 +22,7 @@
                   <tr>
                     <th scope="col">No</th>
                     <th scope="col">Nama</th>
-                    <th scope="col">Tempat Tgl. Lahir</th>
+                    <th scope="col">Tempat & Tgl. Lahir</th>
                     <th scope="col">Alamat</th>
                     <th scope="col">Pekerjaan</th>
                     <th scope="col">No KK</th>
@@ -36,7 +36,7 @@
                   <tr>
                     <th scope="row">{{ $loop->iteration }}</th>
                     <td>{{ $item->NAMA }}</td>
-                    <td>{{ $item->TEMPAT_LAHIR }}</td>
+                    <td>{{ $item->TEMPAT_LAHIR }},  {{$item->TGL_LAHIR->format('d-m-Y')}}</td>
                     <td>{{ $item->ALAMAT}}</td>
                     <td>{{ $item->PEKERJAAN}}</td>
                     <td>{{ $item->NOKK }}</td>

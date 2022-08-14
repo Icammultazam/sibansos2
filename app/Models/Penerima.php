@@ -9,6 +9,7 @@ class Penerima extends Model
 {
     use HasFactory;
     protected $guarded = ['id'];
+    protected $dates = ['TGL_LAHIR'];
 
     public function scopeFilter($query, array $filters)
     {

@@ -37,7 +37,7 @@
           <td>{{ $loop->iteration }}</td>
           <td>{{ $jadwal->NAMADESA }}</td>
           <td>{{ $jadwal->NAMAWAR0NG }}</td>
-          <td>{{ $jadwal->TGL_PENYALURAN }}</td>
+          <td>{{ $jadwal->TGL_PENYALURAN->format('d-m-Y')}}</td>
           <td>{{ $jadwal->TEMPAT_SALUR}}</td>
           <td>
             {{-- <a href="/dashboard/agen/{{ $jadwal->id }}" class="badge bg-info"> <span data-feather='eye'></span></a> --}}
